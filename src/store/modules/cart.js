@@ -4,6 +4,7 @@ import { getData } from '@/services/cartService';
 const cart = {
   state: () => ({
     loading: false,
+    isOpen: false,
     cart: [],
     total: 0,
     amount: 0,
@@ -46,6 +47,12 @@ const cart = {
 
       tempCart.filter((item) => item.amount !== 0);
     },
+    openModal(state) {
+      state.isOpen = true;
+    },
+    closeModal(state) {
+      state.isOpen = false;
+    },
   },
   actions: {
     async fetchData({ commit }) {
@@ -56,6 +63,7 @@ const cart = {
   },
   getters: {
     cart: (state) => state.cart,
+    isOpen: (state) => state.isOpen,
     loading: (state) => state.loading,
     amount(state) {
       return state.cart

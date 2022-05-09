@@ -11,7 +11,7 @@
       <h2>Your bag</h2>
     </header>
     <div>
-      <CartItem v-for="item in cart" :key="item.id" :item="item" />
+      <cart-item v-for="item in cart" :key="item.id" :item="item" />
     </div>
     <footer>
       <hr />
@@ -20,7 +20,7 @@
           Total <span>${{ total }}</span>
         </h4>
       </div>
-      <button class="btn clear-btn" @click="clearCart">Clear cart</button>
+      <button class="btn clear-btn" @click="openModal">Clear cart</button>
     </footer>
   </section>
 </template>
@@ -35,7 +35,7 @@ export default {
   computed: mapGetters(['cart', 'total']),
   methods: {
     ...mapActions(['fetchData']),
-    ...mapMutations(['clearCart']),
+    ...mapMutations(['openModal']),
   },
   mounted() {
     this.fetchData();
